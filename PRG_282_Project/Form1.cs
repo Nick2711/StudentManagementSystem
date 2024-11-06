@@ -26,19 +26,24 @@ namespace PRG_282_Project
 
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Helloo villlyy");
-<<<<<<< Updated upstream
-=======
+
 
             MessageBox.Show("Hi there");
 
             MessageBox.Show("Are you sure you want to");
+
             MessageBox.Show("Hi there DeaN ");
 
 
->>>>>>> Stashed changes
+
         }
+
+
+        }
+
     }
 }
