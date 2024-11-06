@@ -75,9 +75,21 @@ namespace PRG_282_Project
             DisplayInfoMid(new AddStudent());
         }
 
+
         private void ViewStudentsNavbtn_Click(object sender, EventArgs e)
         {
             DisplayInfoMid(new ViewStudents());
+
+
+            MessageBox.Show("Hi there");
+
+            MessageBox.Show("Are you sure you want to");
+
+            MessageBox.Show("Hi there DeaN ");
+
+
+
+
         }
 
         private void UpdateDetailsNavbtn_Click(object sender, EventArgs e)
