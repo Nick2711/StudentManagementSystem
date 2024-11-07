@@ -42,6 +42,9 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(612, 275);
             this.dataGridView1.TabIndex = 0;
+
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+
             // 
             // DisplayStudentsbtn
             // 
@@ -51,6 +54,9 @@
             this.DisplayStudentsbtn.TabIndex = 1;
             this.DisplayStudentsbtn.Text = "Display Students";
             this.DisplayStudentsbtn.UseVisualStyleBackColor = true;
+
+            this.DisplayStudentsbtn.Click += new System.EventHandler(this.DisplayStudentsbtn_Click);
+
             // 
             // ViewStudents
             // 
@@ -61,6 +67,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "ViewStudents";
             this.Text = "Form3";
+
+            this.Load += new System.EventHandler(this.ViewStudents_Load);
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

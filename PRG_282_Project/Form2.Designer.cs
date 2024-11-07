@@ -30,7 +30,11 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Updatebtn = new System.Windows.Forms.Button();
+
+            this.SearchStudentID = new System.Windows.Forms.TextBox();
+
             this.textBox1 = new System.Windows.Forms.TextBox();
+
             this.Searchbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +57,18 @@
             this.Updatebtn.TabIndex = 1;
             this.Updatebtn.Text = "Update";
             this.Updatebtn.UseVisualStyleBackColor = true;
+
+            this.Updatebtn.Click += new System.EventHandler(this.Updatebtn_Click);
+            // 
+            // SearchStudentID
+            // 
+            this.SearchStudentID.Location = new System.Drawing.Point(235, 273);
+            this.SearchStudentID.Name = "SearchStudentID";
+            this.SearchStudentID.Size = new System.Drawing.Size(175, 22);
+            this.SearchStudentID.TabIndex = 2;
+            this.SearchStudentID.Text = "Search for Student ID";
+            this.SearchStudentID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
             // 
             // textBox1
             // 
@@ -62,6 +78,7 @@
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "Search for Student ID";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
             // 
             // Searchbtn
             // 
@@ -71,6 +88,9 @@
             this.Searchbtn.TabIndex = 3;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
+
+            this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
+
             // 
             // Form2
             // 
@@ -78,11 +98,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 580);
             this.Controls.Add(this.Searchbtn);
+
+            this.Controls.Add(this.SearchStudentID);
+
             this.Controls.Add(this.textBox1);
+
             this.Controls.Add(this.Updatebtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
             this.Text = "Form2";
+
+            this.Load += new System.EventHandler(this.Form2_Load);
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -93,7 +120,11 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Updatebtn;
+
+        private System.Windows.Forms.TextBox SearchStudentID;
+
         private System.Windows.Forms.TextBox textBox1;
+
         private System.Windows.Forms.Button Searchbtn;
     }
 }
