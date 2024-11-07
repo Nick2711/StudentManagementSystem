@@ -54,7 +54,9 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "View Students";
             this.button1.UseVisualStyleBackColor = true;
+
             this.button1.Click += new System.EventHandler(this.button1_Click);
+
             // 
             // Deletebtn
             // 
@@ -64,7 +66,9 @@
             this.Deletebtn.TabIndex = 2;
             this.Deletebtn.Text = "Delete";
             this.Deletebtn.UseVisualStyleBackColor = true;
+
             this.Deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
+
             // 
             // button2
             // 
@@ -74,7 +78,9 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Search";
             this.button2.UseVisualStyleBackColor = true;
+
             this.button2.Click += new System.EventHandler(this.button2_Click);
+
             // 
             // textBox1
             // 
@@ -84,7 +90,10 @@
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "Search for Student\'s ID ";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
           
+
+
             // 
             // Delete
             // 
@@ -98,7 +107,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Delete";
             this.Text = "Delete";
+
             this.Load += new System.EventHandler(this.Delete_Load);
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

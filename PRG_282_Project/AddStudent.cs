@@ -1,9 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+
 using System.IO;
+
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +16,7 @@ namespace PRG_282_Project
 {
     public partial class AddStudent : Form
     {
+
 
         string filename = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
 
@@ -91,6 +95,13 @@ namespace PRG_282_Project
 
         }
       
+
+        public AddStudent()
+        {
+            InitializeComponent();
+        }
+
+
 
     }
 }

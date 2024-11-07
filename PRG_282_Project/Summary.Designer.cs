@@ -1,6 +1,6 @@
 ﻿namespace PRG_282_Project
 {
-    partial class ViewStudents
+    partial class Summary
     {
         /// <summary>
         /// Required designer variable.
@@ -28,48 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.GenerateSumbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.DisplayStudentsbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(339, 273);
+            this.panel1.TabIndex = 0;
+            // 
+            // GenerateSumbtn
+            // 
+            this.GenerateSumbtn.Location = new System.Drawing.Point(259, 291);
+            this.GenerateSumbtn.Name = "GenerateSumbtn";
+            this.GenerateSumbtn.Size = new System.Drawing.Size(204, 52);
+            this.GenerateSumbtn.TabIndex = 1;
+            this.GenerateSumbtn.Text = "Generate Summary";
+            this.GenerateSumbtn.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(47, 31);
+            this.dataGridView1.Location = new System.Drawing.Point(363, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(612, 275);
-            this.dataGridView1.TabIndex = 0;
-
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-
+            this.dataGridView1.Size = new System.Drawing.Size(339, 273);
+            this.dataGridView1.TabIndex = 2;
             // 
-            // DisplayStudentsbtn
-            // 
-            this.DisplayStudentsbtn.Location = new System.Drawing.Point(259, 331);
-            this.DisplayStudentsbtn.Name = "DisplayStudentsbtn";
-            this.DisplayStudentsbtn.Size = new System.Drawing.Size(190, 53);
-            this.DisplayStudentsbtn.TabIndex = 1;
-            this.DisplayStudentsbtn.Text = "Display Students";
-            this.DisplayStudentsbtn.UseVisualStyleBackColor = true;
-
-            this.DisplayStudentsbtn.Click += new System.EventHandler(this.DisplayStudentsbtn_Click);
-
-            // 
-            // ViewStudents
+            // Summary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 580);
-            this.Controls.Add(this.DisplayStudentsbtn);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ViewStudents";
-            this.Text = "Form3";
-
-            this.Load += new System.EventHandler(this.ViewStudents_Load);
-
+            this.Controls.Add(this.GenerateSumbtn);
+            this.Controls.Add(this.panel1);
+            this.Name = "Summary";
+            this.Text = "Summary";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -77,7 +77,8 @@
 
         #endregion
 
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button GenerateSumbtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button DisplayStudentsbtn;
     }
 }

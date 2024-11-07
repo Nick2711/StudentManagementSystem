@@ -15,21 +15,71 @@ namespace PRG_282_Project
         public Form1()
         {
             InitializeComponent();
+            //CustomiseDesing();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //private void CustomiseDesing()
+        //{
+        //    panelSideMenu.Visible = false;
+        //    panel2.Visible = false;
+        //}
+
+        //private void HideSubMenu()
+        //{
+        //    if (panelSideMenu.Visible == true)
+        //        panelSideMenu.Visible = false;
+
+        //    if (panel2.Visible == true)
+        //        panel2.Visible = false;
+
+        //}
+
+        //private void ShowSubMenu(Panel submenu)
+        //{
+        //    if (submenu.Visible == false)
+        //    {
+        //        HideSubMenu();
+        //        submenu.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        submenu.Visible = false;
+
+        //    }
+        //}
+
+  
+
+        private Form activeForm = null;
+        private void DisplayInfoMid(Form childForm) 
         {
-
-            MessageBox.Show("Meow");
-
-             
+            if (activeForm == null) 
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            DisplayInfoPanel.Controls.Add(childForm);
+            DisplayInfoPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
 
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
+        private void Exitbtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Helloo villlyy");
+            this.Close();
+        }
+
+        private void AddStudentNavbtn_Click(object sender, EventArgs e)
+        {
+            DisplayInfoMid(new AddStudent());
+        }
+
+
+        private void ViewStudentsNavbtn_Click(object sender, EventArgs e)
+        {
+            DisplayInfoMid(new ViewStudents());
+
 
 <<<<<<< Updated upstream
             MessageBox.Show("Hi there");
@@ -39,11 +89,26 @@ namespace PRG_282_Project
          
 >>>>>>> Stashed changes
 
+            MessageBox.Show("Hi there DeaN ");
+
+
+
 
         }
 
-
+        private void UpdateDetailsNavbtn_Click(object sender, EventArgs e)
+        {
+            DisplayInfoMid(new Form2());
         }
 
+        private void DeleteStudentNavbtn_Click(object sender, EventArgs e)
+        {
+            DisplayInfoMid(new Delete());
+        }
+
+        private void GenerateSummarybtn_Click(object sender, EventArgs e)
+        {
+            DisplayInfoMid(new Summary());
+        }
     }
 }

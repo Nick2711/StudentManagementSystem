@@ -7,21 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using System.IO;
+
 
 
 namespace PRG_282_Project
 {
     public partial class Form2 : Form
     {
+
         string filePath = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
         string[] lines;
         int studentIndex = -1;
+
 
         public Form2()
         {
             InitializeComponent();
         }
+
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -164,5 +169,6 @@ namespace PRG_282_Project
 
             return prompt.ShowDialog() == DialogResult.OK ? inputBox.Text : defaultValue;
         }
+
     }
 }

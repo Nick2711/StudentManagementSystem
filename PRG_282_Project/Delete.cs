@@ -7,21 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using System.IO;
+
 
 
 namespace PRG_282_Project
 {
     public partial class Delete : Form
     {
+
         string filePath = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
         string[] lines;
         int studentIndex = -1;
+
 
         public Delete()
         {
             InitializeComponent();
         }
+
 
         private void Delete_Load(object sender, EventArgs e)
         {
@@ -134,4 +139,8 @@ namespace PRG_282_Project
     }
 }
 
+
+
+    }
+}
 

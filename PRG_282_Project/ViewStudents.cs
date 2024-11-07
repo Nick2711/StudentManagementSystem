@@ -7,19 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using System.IO;
+
+
 
 
 namespace PRG_282_Project
 {
     public partial class ViewStudents : Form
     {
+      
         string filename = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
+
 
         public ViewStudents()
         {
             InitializeComponent();
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -73,6 +79,8 @@ namespace PRG_282_Project
                 MessageBox.Show($"An error occurred while reading the file: {ex.Message}");
             }
         }
+    }
+
     }
 
 }
