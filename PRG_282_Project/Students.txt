@@ -13,3 +13,4 @@
 6066,Tests,44,Bacholars of Information systems
 1212,test,33,Diploma of Computing
 4444,Save,2222,Diploma of Computing
+1234,Dean,69,Diploma of Computing
