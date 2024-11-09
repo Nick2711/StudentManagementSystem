@@ -138,7 +138,7 @@ namespace PRG_282_Project
             }
 
             
-            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/PRG282.txt";
+            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/Students.txt";
             string fileContent = await httpClient.GetStringAsync(url);
             studentRecords = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
             selectedStudentIndex = -1;

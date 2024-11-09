@@ -47,7 +47,7 @@ namespace PRG_282_Project
             }
 
             // Fetch data from GitHub
-            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/PRG282.txt";
+            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/Students.txt";
             string fileContent = await client.GetStringAsync(url);
             lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -88,7 +88,7 @@ namespace PRG_282_Project
 
         private async Task<string> GetFileSha()
         {
-            string shaUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/PRG282.txt";
+            string shaUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
             client.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
 
@@ -125,7 +125,7 @@ namespace PRG_282_Project
                 };
 
                 // Set up the request
-                string apiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/PRG282.txt";
+                string apiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
                 client.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
 
@@ -160,7 +160,7 @@ namespace PRG_282_Project
             try
             {
 
-                string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/refs/heads/main/PRG_282_Project/PRG282.txt";
+                string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/refs/heads/main/PRG_282_Project/Students.txt";
 
 
 

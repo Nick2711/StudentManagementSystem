@@ -53,7 +53,7 @@ namespace PRG_282_Project
             try
             {
               
-                string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/refs/heads/main/PRG_282_Project/PRG282.txt";
+                string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/refs/heads/main/PRG_282_Project/Students.txt";
 
                 
        

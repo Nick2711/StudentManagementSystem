@@ -74,7 +74,7 @@ namespace PRG_282_Project
         
 
         private static readonly HttpClient client = new HttpClient();
-            private const string GitHubApiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/PRG282.txt";
+            private const string GitHubApiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
             private static readonly string GitHubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
 
         public AddStudent()
