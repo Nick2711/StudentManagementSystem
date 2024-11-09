@@ -6,7 +6,7 @@
 7188,Henry,21,Bacholars of Information systems
 7189,Harper,23,Bacholers of computing
 7190,Alexander,18,Bacholers of IT
-6011,Nick,22,Diploma of Computing
+6011,nICKKK,21,Diploma of Computing
 2123,Updasted,22,Bacholars of Computing
 60111,Nickss,22,Diploma of Computing
 44434,Villy,12,Bacholars of Computing
