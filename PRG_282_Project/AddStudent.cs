@@ -97,15 +97,7 @@ namespace PRG_282_Project
       
 
 
-        //public AddStudent()
-        //{
-        //    InitializeComponent();
-        //}
-
-        public AddStudent()
-        {
-            InitializeComponent();
-        }
+      
 
 
 

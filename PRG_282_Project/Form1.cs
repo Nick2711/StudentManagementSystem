@@ -48,13 +48,13 @@ namespace PRG_282_Project
         //    }
         //}
 
-  
+
 
         private Form activeForm = null;
-        private void DisplayInfoMid(Form childForm) 
+        private void DisplayInfoMid(Form childForm)
         {
-            if (activeForm == null) 
-            activeForm = childForm;
+            if (activeForm == null)
+                activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
@@ -76,43 +76,33 @@ namespace PRG_282_Project
         }
 
 
-        private void ViewStudentsNavbtn_Click(object sender, EventArgs e)
-        {
-            DisplayInfoMid(new ViewStudents());
+       
 
-
-
-          
-
-         
-
-
-           
-
-        private void ViewStudentsNavbtn_Click(object sender, EventArgs e)
-        {
-            DisplayInfoMid(new ViewStudents());
+            private void ViewStudentsNavbtn_Click(object sender, EventArgs e)
+            {
+                DisplayInfoMid(new ViewStudents());
 
 
 
 
 
 
-        }
+            }
 
-        private void UpdateDetailsNavbtn_Click(object sender, EventArgs e)
-        {
-            DisplayInfoMid(new Form2());
-        }
+            private void UpdateDetailsNavbtn_Click(object sender, EventArgs e)
+            {
+                DisplayInfoMid(new Form2());
+            }
 
-        private void DeleteStudentNavbtn_Click(object sender, EventArgs e)
-        {
-            DisplayInfoMid(new Delete());
-        }
+            private void DeleteStudentNavbtn_Click(object sender, EventArgs e)
+            {
+                DisplayInfoMid(new Delete());
+            }
 
-        private void GenerateSummarybtn_Click(object sender, EventArgs e)
-        {
-            DisplayInfoMid(new Summary());
+            private void GenerateSummarybtn_Click(object sender, EventArgs e)
+            {
+                DisplayInfoMid(new Summary());
+            }
         }
     }
-}
+
