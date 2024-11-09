@@ -36,6 +36,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
             this.dataGridView1.Location = new System.Drawing.Point(11, 25);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
@@ -67,6 +68,42 @@
             this.Name = "ViewStudents";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.ViewStudents_Load);
+
+            this.dataGridView1.Location = new System.Drawing.Point(47, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(612, 275);
+            this.dataGridView1.TabIndex = 0;
+
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+
+            // 
+            // DisplayStudentsbtn
+            // 
+            this.DisplayStudentsbtn.Location = new System.Drawing.Point(259, 331);
+            this.DisplayStudentsbtn.Name = "DisplayStudentsbtn";
+            this.DisplayStudentsbtn.Size = new System.Drawing.Size(190, 53);
+            this.DisplayStudentsbtn.TabIndex = 1;
+            this.DisplayStudentsbtn.Text = "Display Students";
+            this.DisplayStudentsbtn.UseVisualStyleBackColor = true;
+
+            this.DisplayStudentsbtn.Click += new System.EventHandler(this.DisplayStudentsbtn_Click);
+
+            // 
+            // ViewStudents
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(714, 580);
+            this.Controls.Add(this.DisplayStudentsbtn);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "ViewStudents";
+            this.Text = "Form3";
+
+            this.Load += new System.EventHandler(this.ViewStudents_Load);
+
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
