@@ -1,41 +1,146 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using System.IO;
-
-
+using Newtonsoft.Json;
 
 namespace PRG_282_Project
 {
-    public partial class Delete : Form
+    public partial class DeleteForm : Form
     {
+        private static readonly HttpClient httpClient = new HttpClient();
+        private const string GitHubApiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/PRG282.txt";
+        private string[] studentRecords;
+        private int selectedStudentIndex = -1;
 
-        string filePath = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
-        string[] lines;
-        int studentIndex = -1;
-
-
-        public Delete()
+        public DeleteForm()
         {
             InitializeComponent();
         }
 
+       
 
-        private void Delete_Load(object sender, EventArgs e)
+     
+
+        private async Task<string> FetchStudentDataFromGitHub()
         {
-            DisplayData(); // Load and display data when the form loads
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
+
+            HttpResponseMessage response = await httpClient.GetAsync(GitHubApiUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                dynamic jsonData = JsonConvert.DeserializeObject(jsonResponse);
+                return Encoding.UTF8.GetString(Convert.FromBase64String((string)jsonData.content));
+            }
+
+            MessageBox.Show("Failed to retrieve file content from GitHub.");
+            return null;
         }
 
-        private void button1_Click(object sender, EventArgs e) // Search Button
+        private async Task<string> FetchFileSha()
         {
-            string searchID = textBox1.Text;
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
+
+            HttpResponseMessage response = await httpClient.GetAsync(GitHubApiUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                dynamic jsonData = JsonConvert.DeserializeObject(jsonResponse);
+                return jsonData.sha;
+            }
+
+            throw new Exception("Failed to fetch file SHA.");
+        }
+
+        private async void DeleteStudentBtn_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private async Task<bool> UpdateStudentDataOnGitHub(string content)
+        {
+            try
+            {
+                // Encode content in Base64
+                string base64Content = Convert.ToBase64String(Encoding.UTF8.GetBytes(content));
+
+                // Prepare GitHub API payload
+                var payload = new
+                {
+                    message = "Delete student record",
+                    content = base64Content,
+                    sha = await FetchFileSha()
+                };
+
+                // Send PUT request to update file on GitHub
+                var requestContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await httpClient.PutAsync(GitHubApiUrl, requestContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show($"Error updating data: {response.ReasonPhrase}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating the file: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Method to display all data in DataGridView
+        private async void LoadStudentData()
+        {
+            try
+            {
+                string fileContent = await FetchStudentDataFromGitHub();
+                if (fileContent == null) return;
+
+                studentRecords = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Clear DataGridView and add columns
+                studentDataGridView.Rows.Clear();
+                studentDataGridView.Columns.Clear();
+                studentDataGridView.Columns.Add("StudentID", "Student ID");
+                studentDataGridView.Columns.Add("Name", "Name");
+                studentDataGridView.Columns.Add("Age", "Age");
+                studentDataGridView.Columns.Add("Course", "Course");
+
+                // Add each line as a row in DataGridView
+                foreach (string line in studentRecords)
+                {
+                    string[] studentData = line.Split(',');
+                    if (studentData.Length == 4)
+                    {
+                        studentDataGridView.Rows.Add(studentData);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while reading the file: {ex.Message}");
+            }
+        }
+
+        private void DeleteForm_Load_1(object sender, EventArgs e)
+        {
+            LoadStudentData();
+        }
+
+        private async void SearchStudentIDTextBox_Click(object sender, EventArgs e)
+        {
+            string searchID = SearchStudentIDTextBox.Text;
 
             if (string.IsNullOrWhiteSpace(searchID))
             {
@@ -43,107 +148,60 @@ namespace PRG_282_Project
                 return;
             }
 
-            lines = File.ReadAllLines(filePath);
-            studentIndex = -1;
+            // Fetch data from GitHub
+            string fileContent = await FetchStudentDataFromGitHub();
+            if (fileContent == null) return;
 
-            // Clear DataGridView before displaying the search result
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("StudentID", "Student ID");
-            dataGridView1.Columns.Add("Name", "Name");
-            dataGridView1.Columns.Add("Age", "Age");
-            dataGridView1.Columns.Add("Course", "Course");
+            studentRecords = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            selectedStudentIndex = -1;
 
-            // Loop through each line to find the matching student ID
-            for (int i = 0; i < lines.Length; i++)
+            // Search for the student by ID
+            studentDataGridView.Rows.Clear();
+            for (int i = 0; i < studentRecords.Length; i++)
             {
-                string[] studentData = lines[i].Split(',');
+                string[] studentData = studentRecords[i].Split(',');
 
                 if (studentData[0] == searchID)
                 {
-                    studentIndex = i;
-                    dataGridView1.Rows.Add(studentData); // Display found student
+                    selectedStudentIndex = i;
+                    studentDataGridView.Rows.Add(studentData); // Display found student
                     MessageBox.Show("Student found. You can delete this student if desired.");
                     return;
                 }
             }
 
-            if (studentIndex == -1)
+            if (selectedStudentIndex == -1)
             {
                 MessageBox.Show("Student ID not found.");
             }
         }
 
-        private void button2_Click(object sender, EventArgs e) // View All Students Button
+        private async void Deletebtn_Click(object sender, EventArgs e)
         {
-            DisplayData(); // Display all students
-        }
-
-        private void Deletebtn_Click(object sender, EventArgs e) // Delete Button
-        {
-            if (studentIndex == -1)
+            if (selectedStudentIndex == -1)
             {
                 MessageBox.Show("Please search for a student to delete.");
                 return;
             }
 
-            // Ask for confirmation before deletion
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this student?",
-                                                 "Confirm Deletion",
-                                                 MessageBoxButtons.YesNo);
+            // Confirm deletion
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this student?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                // Remove the student from the lines array
-                lines = lines.Where((line, index) => index != studentIndex).ToArray();
-                File.WriteAllLines(filePath, lines); // Update the file
-                MessageBox.Show("Student deleted successfully.");
+                // Remove the student from the studentRecords array
+                studentRecords = studentRecords.Where((line, index) => index != selectedStudentIndex).ToArray();
+                string updatedContent = string.Join(Environment.NewLine, studentRecords);
 
-                // Reset the search index and refresh the DataGridView
-                studentIndex = -1;
-                DisplayData(); // Refresh data to show all records after deletion
-            }
-        }
-
-        // Method to display all data in DataGridView
-        private void DisplayData()
-        {
-            // Clear existing rows and columns
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-
-            // Define columns
-            dataGridView1.Columns.Add("StudentID", "Student ID");
-            dataGridView1.Columns.Add("Name", "Name");
-            dataGridView1.Columns.Add("Age", "Age");
-            dataGridView1.Columns.Add("Course", "Course");
-
-            // Read all lines from the file
-            string[] lines = File.ReadAllLines(filePath);
-
-            // Loop through each line and add it to the DataGridView
-            foreach (string line in lines)
-            {
-                string[] studentData = line.Split(',');
-
-                // Ensure the line has the correct number of fields
-                if (studentData.Length == 4)
+                // Update the file on GitHub
+                bool success = await UpdateStudentDataOnGitHub(updatedContent);
+                if (success)
                 {
-                    dataGridView1.Rows.Add(studentData);
-                }
-                else
-                {
-                    MessageBox.Show("Some data may be missing or incorrectly formatted in the file.");
+                    MessageBox.Show("Student deleted successfully from GitHub.");
+                    selectedStudentIndex = -1;
+                    LoadStudentData(); // Refresh the DataGridView to show updated data
                 }
             }
         }
     }
-}
-
-
-
-
-  
-
-  
-
+    }
 

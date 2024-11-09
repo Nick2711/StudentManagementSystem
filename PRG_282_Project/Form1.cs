@@ -96,7 +96,7 @@ namespace PRG_282_Project
 
             private void DeleteStudentNavbtn_Click(object sender, EventArgs e)
             {
-                DisplayInfoMid(new Delete());
+                DisplayInfoMid(new DeleteForm());
             }
 
             private void GenerateSummarybtn_Click(object sender, EventArgs e)
