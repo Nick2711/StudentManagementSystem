@@ -37,13 +37,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
 
 
-            this.StudentID = new System.Windows.Forms.TextBox();
-            this.Age = new System.Windows.Forms.TextBox();
-            this.Name = new System.Windows.Forms.TextBox();
-
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            
 
 
             this.label1 = new System.Windows.Forms.Label();
@@ -54,8 +48,7 @@
             this.CourseBox = new System.Windows.Forms.ComboBox();
 
 
-            this.CourseBox = new System.Windows.Forms.ComboBox();
-            this.StudentSubmitbtn = new System.Windows.Forms.Button();
+            
 
             this.SuspendLayout();
             // 
