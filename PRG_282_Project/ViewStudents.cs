@@ -23,10 +23,6 @@ namespace PRG_282_Project
     {
       
 
-       
-
-        string filename = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
-
 
 
         public ViewStudents()
