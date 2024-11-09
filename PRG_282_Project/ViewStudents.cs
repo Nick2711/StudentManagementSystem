@@ -73,7 +73,7 @@ namespace PRG_282_Project
                 string fileContent = await client.GetStringAsync(url);
 
                
-                string[] lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                string[] lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
                
                 foreach (string line in lines)

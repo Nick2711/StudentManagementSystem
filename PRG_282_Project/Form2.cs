@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.IO;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 
 
@@ -17,7 +20,7 @@ namespace PRG_282_Project
     public partial class Form2 : Form
     {
 
-        string filePath = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
+        //string filePath = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
         string[] lines;
         int studentIndex = -1;
 
@@ -33,7 +36,7 @@ namespace PRG_282_Project
             DisplayData(); // Display the data when the form loads
         }
 
-        private void Searchbtn_Click(object sender, EventArgs e)
+        private async void Searchbtn_Click(object sender, EventArgs e)
         {
             string searchID = SearchStudentID.Text;
 
@@ -43,7 +46,11 @@ namespace PRG_282_Project
                 return;
             }
 
-            lines = File.ReadAllLines(filePath);
+            // Fetch data from GitHub
+            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/PRG282.txt";
+            string fileContent = await client.GetStringAsync(url);
+            lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
             studentIndex = -1;
 
             for (int i = 0; i < lines.Length; i++)
@@ -61,23 +68,10 @@ namespace PRG_282_Project
                     string coursePrompt = "Enter new Course ID:\n1. Bacholars of Computing\n2. Diploma of Computing\n3. Bacholars of Information systems";
                     string newCourseInput = Prompt.ShowDialog(coursePrompt, "Update Course", studentData[3]);
 
-                    string newCourse;
-                    if (newCourseInput == "1")
-                    {
-                        newCourse = courses[0];
-                    }
-                    else if (newCourseInput == "2")
-                    {
-                        newCourse = courses[1];
-                    }
-                    else if (newCourseInput == "3")
-                    {
-                        newCourse = courses[2];
-                    }
-                    else
-                    {
-                        newCourse = studentData[3];  // Keep original course if input is invalid
-                    }
+                    string newCourse = studentData[3];
+                    if (newCourseInput == "1") newCourse = courses[0];
+                    else if (newCourseInput == "2") newCourse = courses[1];
+                    else if (newCourseInput == "3") newCourse = courses[2];
 
                     lines[studentIndex] = $"{studentData[0]},{newName},{newAge},{newCourse}";
                     MessageBox.Show("Information ready to be updated. Press 'Update' to save changes.");
@@ -91,7 +85,24 @@ namespace PRG_282_Project
             }
         }
 
-        private void Updatebtn_Click(object sender, EventArgs e)
+
+        private async Task<string> GetFileSha()
+        {
+            string shaUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/PRG282.txt";
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
+
+            HttpResponseMessage response = await client.GetAsync(shaUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                dynamic jsonData = JsonConvert.DeserializeObject(jsonResponse);
+                return jsonData.sha;
+            }
+            throw new Exception("Failed to fetch file SHA.");
+        }
+
+        private async void Updatebtn_Click(object sender, EventArgs e)
         {
             if (studentIndex == -1)
             {
@@ -101,9 +112,36 @@ namespace PRG_282_Project
 
             try
             {
-                File.WriteAllLines(filePath, lines);
-                MessageBox.Show("Student information updated successfully.");
-                DisplayData(); // Refresh the DataGridView with updated data
+                // Encode updated content in Base64
+                string updatedContent = string.Join(Environment.NewLine, lines);
+                string base64Content = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatedContent));
+
+                // Prepare the GitHub API payload
+                var payload = new
+                {
+                    message = "Updated student information",
+                    content = base64Content,
+                    sha = await GetFileSha()
+                };
+
+                // Set up the request
+                string apiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/PRG282.txt";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
+                client.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
+
+                // Send PUT request to update file on GitHub
+                var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+                var response = await client.PutAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Student information updated successfully on GitHub.");
+                    DisplayData(); // Refresh the DataGridView with updated data
+                }
+                else
+                {
+                    MessageBox.Show($"Error updating data: {response.ReasonPhrase}");
+                }
             }
             catch (Exception ex)
             {
@@ -111,36 +149,67 @@ namespace PRG_282_Project
             }
         }
 
+
+
+
         // Method to display data in DataGridView
-        private void DisplayData()
+
+        private static readonly HttpClient client = new HttpClient(); 
+        private async void DisplayData()
         {
-            // Clear existing rows and columns
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-
-            // Define columns
-            dataGridView1.Columns.Add("StudentID", "Student ID");
-            dataGridView1.Columns.Add("Name", "Name");
-            dataGridView1.Columns.Add("Age", "Age");
-            dataGridView1.Columns.Add("Course", "Course");
-
-            // Read all lines from the file
-            string[] lines = File.ReadAllLines(filePath);
-
-            // Loop through each line and add it to the DataGridView
-            foreach (string line in lines)
+            try
             {
-                string[] studentData = line.Split(',');
 
-                // Ensure the line has the correct number of fields
-                if (studentData.Length == 4)
+                string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/refs/heads/main/PRG_282_Project/PRG282.txt";
+
+
+
+
+
+                dataGridView1.Rows.Clear();
+                dataGridView1.Columns.Clear();
+
+
+                dataGridView1.Columns.Add("StudentID", "Student ID");
+                dataGridView1.Columns.Add("Name", "Name");
+                dataGridView1.Columns.Add("Age", "Age");
+                dataGridView1.Columns.Add("Course", "Course");
+
+
+
+                string fileContent = await client.GetStringAsync(url);
+
+
+                string[] lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+
+                foreach (string line in lines)
                 {
-                    dataGridView1.Rows.Add(studentData);
+
+                    string[] studentData = line.Split(',');
+
+
+                    if (studentData.Length == 4)
+                    {
+
+                        dataGridView1.Rows.Add(studentData);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Some data may be missing or incorrectly formatted in the file.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Some data may be missing or incorrectly formatted in the file.");
-                }
+            }
+
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"An error occurred while fetching the file: {ex.Message}");
+            }
+
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while reading the file: {ex.Message}");
             }
         }
     }
@@ -171,4 +240,8 @@ namespace PRG_282_Project
         }
 
     }
+
+
+    
+
 }
