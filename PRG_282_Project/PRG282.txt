@@ -3,24 +3,10 @@
 7173,Emma,19,Bacholers of computing
 7174,Liam,22,Bacholars of Information systems
 7175,Olivia,20,Bacholers of IT
-7176,Noah,18,Bacholers of computing
-7177,Ava,23,Bacholars of Information systems
-7178,Elijah,24,Bacholers of computing
-7179,Isabella,19,Bacholers of IT
-7180,Mason,21,Bacholars of Information systems
-7181,Sophia,20,Bacholers of computing
-7182,William,22,Bacholars of Information systems
-7183,Amelia,18,Bacholers of IT
-7184,Lucas,23,Bacholers of computing
-7185,Mia,19,Bacholars of Information systems
-7186,Benjamin,20,Bacholers of IT
-7187,Evelyn,22,Bacholers of computing
 7188,Henry,21,Bacholars of Information systems
 7189,Harper,23,Bacholers of computing
 7190,Alexander,18,Bacholers of IT
-
-
-6011,Nick,21,Bacholars of Computing
-6969,villy,18,Diploma of Computing
-6066,Test,23,Diploma of Computing
-1234,M,232,Bacholars of Computing
+6011,Nick,22,Diploma of Computing
+2123,Updasted,22,Bacholars of Computing
+60111,Nickss,22,Diploma of Computing
+44434,Villy,12,Bacholars of Computing
