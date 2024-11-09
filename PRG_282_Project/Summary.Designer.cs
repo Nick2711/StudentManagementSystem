@@ -36,14 +36,15 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(255, 282);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(339, 273);
+            this.panel1.Size = new System.Drawing.Size(447, 254);
             this.panel1.TabIndex = 0;
             // 
             // GenerateSumbtn
             // 
-            this.GenerateSumbtn.Location = new System.Drawing.Point(259, 291);
+            this.GenerateSumbtn.Font = new System.Drawing.Font("Rockwell Nova", 10.2F, System.Drawing.FontStyle.Bold);
+            this.GenerateSumbtn.Location = new System.Drawing.Point(12, 240);
             this.GenerateSumbtn.Name = "GenerateSumbtn";
             this.GenerateSumbtn.Size = new System.Drawing.Size(204, 52);
             this.GenerateSumbtn.TabIndex = 1;
@@ -53,11 +54,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(363, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(255, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(339, 273);
+            this.dataGridView1.Size = new System.Drawing.Size(447, 264);
             this.dataGridView1.TabIndex = 2;
             // 
             // Summary

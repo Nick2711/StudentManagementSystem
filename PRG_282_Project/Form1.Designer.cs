@@ -70,10 +70,10 @@
             this.Exitbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Exitbtn.Font = new System.Drawing.Font("Rockwell Nova", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exitbtn.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.Exitbtn.Location = new System.Drawing.Point(0, 446);
+            this.Exitbtn.Location = new System.Drawing.Point(0, 447);
             this.Exitbtn.Name = "Exitbtn";
-            this.Exitbtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.Exitbtn.Size = new System.Drawing.Size(217, 57);
+            this.Exitbtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.Exitbtn.Size = new System.Drawing.Size(217, 60);
             this.Exitbtn.TabIndex = 6;
             this.Exitbtn.Text = "Exit";
             this.Exitbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -86,11 +86,12 @@
             this.GenerateSummarybtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.GenerateSummarybtn.FlatAppearance.BorderSize = 0;
             this.GenerateSummarybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GenerateSummarybtn.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Bold);
             this.GenerateSummarybtn.ForeColor = System.Drawing.SystemColors.MenuText;
             this.GenerateSummarybtn.Location = new System.Drawing.Point(0, 390);
             this.GenerateSummarybtn.Name = "GenerateSummarybtn";
             this.GenerateSummarybtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.GenerateSummarybtn.Size = new System.Drawing.Size(217, 56);
+            this.GenerateSummarybtn.Size = new System.Drawing.Size(217, 57);
             this.GenerateSummarybtn.TabIndex = 5;
             this.GenerateSummarybtn.Text = "Generate Summary";
             this.GenerateSummarybtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -115,11 +116,12 @@
             this.DeleteStudentNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.DeleteStudentNavbtn.FlatAppearance.BorderSize = 0;
             this.DeleteStudentNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteStudentNavbtn.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Bold);
             this.DeleteStudentNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.DeleteStudentNavbtn.Location = new System.Drawing.Point(0, 159);
+            this.DeleteStudentNavbtn.Location = new System.Drawing.Point(0, 161);
             this.DeleteStudentNavbtn.Name = "DeleteStudentNavbtn";
             this.DeleteStudentNavbtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.DeleteStudentNavbtn.Size = new System.Drawing.Size(217, 57);
+            this.DeleteStudentNavbtn.Size = new System.Drawing.Size(217, 55);
             this.DeleteStudentNavbtn.TabIndex = 4;
             this.DeleteStudentNavbtn.Text = "Delete Student";
             this.DeleteStudentNavbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,11 +134,12 @@
             this.UpdateDetailsNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.UpdateDetailsNavbtn.FlatAppearance.BorderSize = 0;
             this.UpdateDetailsNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateDetailsNavbtn.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Bold);
             this.UpdateDetailsNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
             this.UpdateDetailsNavbtn.Location = new System.Drawing.Point(0, 104);
             this.UpdateDetailsNavbtn.Name = "UpdateDetailsNavbtn";
             this.UpdateDetailsNavbtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.UpdateDetailsNavbtn.Size = new System.Drawing.Size(217, 55);
+            this.UpdateDetailsNavbtn.Size = new System.Drawing.Size(217, 57);
             this.UpdateDetailsNavbtn.TabIndex = 3;
             this.UpdateDetailsNavbtn.Text = "Update Details";
             this.UpdateDetailsNavbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,6 +152,7 @@
             this.ViewStudentsNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.ViewStudentsNavbtn.FlatAppearance.BorderSize = 0;
             this.ViewStudentsNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ViewStudentsNavbtn.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Bold);
             this.ViewStudentsNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
             this.ViewStudentsNavbtn.Location = new System.Drawing.Point(0, 51);
             this.ViewStudentsNavbtn.Name = "ViewStudentsNavbtn";
@@ -166,6 +170,7 @@
             this.AddStudentNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.AddStudentNavbtn.FlatAppearance.BorderSize = 0;
             this.AddStudentNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddStudentNavbtn.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddStudentNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
             this.AddStudentNavbtn.Location = new System.Drawing.Point(0, 0);
             this.AddStudentNavbtn.Name = "AddStudentNavbtn";
@@ -196,10 +201,10 @@
             this.btnOptions.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnOptions.Location = new System.Drawing.Point(0, 116);
             this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnOptions.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnOptions.Size = new System.Drawing.Size(217, 58);
             this.btnOptions.TabIndex = 0;
-            this.btnOptions.Text = "Options";
+            this.btnOptions.Text = "Media";
             this.btnOptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOptions.UseVisualStyleBackColor = false;
             // 

@@ -80,6 +80,7 @@ namespace PRG_282_Project
         {
             DisplayInfoMid(new ViewStudents());
 
+<<<<<<< Updated upstream
 
             MessageBox.Show("Hi there");
 
@@ -105,6 +106,28 @@ namespace PRG_282_Project
         private void GenerateSummarybtn_Click(object sender, EventArgs e)
         {
             DisplayInfoMid(new Summary());
+=======
+        private void ViewStudentsNavbtn_Click(object sender, EventArgs e)
+        {
+                DisplayInfoMid(new ViewStudents());
+
+        }
+
+            private void UpdateDetailsNavbtn_Click(object sender, EventArgs e)
+            {
+                DisplayInfoMid(new Update());
+            }
+
+            private void DeleteStudentNavbtn_Click(object sender, EventArgs e)
+            {
+                DisplayInfoMid(new DeleteForm());
+            }
+
+            private void GenerateSummarybtn_Click(object sender, EventArgs e)
+            {
+                DisplayInfoMid(new Summary());
+            }
+>>>>>>> Stashed changes
         }
     }
 }
