@@ -13,7 +13,7 @@ namespace PRG_282_Project
     public partial class DeleteForm : Form
     {
         private static readonly HttpClient httpClient = new HttpClient();
-        private const string GitHubApiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/PRG282.txt";
+        private const string GitHubApiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/bin/Debug/Students.txt";
         private string[] studentRecords;
         private int selectedStudentIndex = -1;
 
