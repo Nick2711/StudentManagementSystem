@@ -9,6 +9,5 @@
 2123,Updasted,22,Bacholars of Computing
 60111,Nickss,22,Diploma of Computing
 44434,Villy,12,Bacholars of Computing
-123,Men,33,Diploma of Computing
 6011,Niock,67,Diploma of Computing
 6066,Tests,44,Bacholars of Information systems
