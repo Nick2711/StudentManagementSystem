@@ -48,7 +48,7 @@
             // 
             // SearchStudentIDTextBox
             // 
-            this.SearchStudentIDTextBox.Location = new System.Drawing.Point(35, 210);
+            this.SearchStudentIDTextBox.Location = new System.Drawing.Point(36, 211);
             this.SearchStudentIDTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.SearchStudentIDTextBox.Name = "SearchStudentIDTextBox";
             this.SearchStudentIDTextBox.Size = new System.Drawing.Size(119, 55);
@@ -70,7 +70,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(159, 229);
+            this.textBox1.Location = new System.Drawing.Point(186, 229);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(148, 20);

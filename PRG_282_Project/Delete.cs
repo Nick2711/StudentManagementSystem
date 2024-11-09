@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using static System.Windows.Forms.LinkLabel;
 
 namespace PRG_282_Project
 {
@@ -20,10 +21,6 @@ namespace PRG_282_Project
         {
             InitializeComponent();
         }
-
-       
-
-     
 
         private async Task<string> FetchStudentDataFromGitHub()
         {
@@ -58,19 +55,14 @@ namespace PRG_282_Project
             throw new Exception("Failed to fetch file SHA.");
         }
 
-        private async void DeleteStudentBtn_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private async Task<bool> UpdateStudentDataOnGitHub(string content)
         {
             try
             {
-                // Encode content in Base64
+                
                 string base64Content = Convert.ToBase64String(Encoding.UTF8.GetBytes(content));
 
-                // Prepare GitHub API payload
+               
                 var payload = new
                 {
                     message = "Delete student record",
@@ -78,7 +70,7 @@ namespace PRG_282_Project
                     sha = await FetchFileSha()
                 };
 
-                // Send PUT request to update file on GitHub
+                
                 var requestContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await httpClient.PutAsync(GitHubApiUrl, requestContent);
 
@@ -99,7 +91,6 @@ namespace PRG_282_Project
             }
         }
 
-        // Method to display all data in DataGridView
         private async void LoadStudentData()
         {
             try
@@ -109,7 +100,6 @@ namespace PRG_282_Project
 
                 studentRecords = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                // Clear DataGridView and add columns
                 studentDataGridView.Rows.Clear();
                 studentDataGridView.Columns.Clear();
                 studentDataGridView.Columns.Add("StudentID", "Student ID");
@@ -117,7 +107,7 @@ namespace PRG_282_Project
                 studentDataGridView.Columns.Add("Age", "Age");
                 studentDataGridView.Columns.Add("Course", "Course");
 
-                // Add each line as a row in DataGridView
+                
                 foreach (string line in studentRecords)
                 {
                     string[] studentData = line.Split(',');
@@ -133,14 +123,13 @@ namespace PRG_282_Project
             }
         }
 
-        private void DeleteForm_Load_1(object sender, EventArgs e)
-        {
-            LoadStudentData();
-        }
+      
+     
+        
 
         private async void SearchStudentIDTextBox_Click(object sender, EventArgs e)
         {
-            string searchID = SearchStudentIDTextBox.Text;
+            string searchID = textBox1.Text;
 
             if (string.IsNullOrWhiteSpace(searchID))
             {
@@ -148,15 +137,12 @@ namespace PRG_282_Project
                 return;
             }
 
-            // Fetch data from GitHub
-            string fileContent = await FetchStudentDataFromGitHub();
-            if (fileContent == null) return;
-
+            
+            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/PRG282.txt";
+            string fileContent = await httpClient.GetStringAsync(url);
             studentRecords = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
             selectedStudentIndex = -1;
 
-            // Search for the student by ID
-            studentDataGridView.Rows.Clear();
             for (int i = 0; i < studentRecords.Length; i++)
             {
                 string[] studentData = studentRecords[i].Split(',');
@@ -164,8 +150,8 @@ namespace PRG_282_Project
                 if (studentData[0] == searchID)
                 {
                     selectedStudentIndex = i;
-                    studentDataGridView.Rows.Add(studentData); // Display found student
-                    MessageBox.Show("Student found. You can delete this student if desired.");
+                    studentDataGridView.Rows.Add(studentData); 
+                    MessageBox.Show("Student found. You can delete this student by clicking the Delete button.");
                     return;
                 }
             }
@@ -184,24 +170,28 @@ namespace PRG_282_Project
                 return;
             }
 
-            // Confirm deletion
+           
             var confirmResult = MessageBox.Show("Are you sure you want to delete this student?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                // Remove the student from the studentRecords array
+               
                 studentRecords = studentRecords.Where((line, index) => index != selectedStudentIndex).ToArray();
                 string updatedContent = string.Join(Environment.NewLine, studentRecords);
 
-                // Update the file on GitHub
+                
                 bool success = await UpdateStudentDataOnGitHub(updatedContent);
                 if (success)
                 {
-                    MessageBox.Show("Student deleted successfully from GitHub.");
+                    MessageBox.Show("Student deleted successfully.");
                     selectedStudentIndex = -1;
-                    LoadStudentData(); // Refresh the DataGridView to show updated data
+                    LoadStudentData(); 
                 }
             }
         }
-    }
-    }
 
+        private void DeleteForm_Load_1(object sender, EventArgs e)
+        {
+            LoadStudentData();
+        }
+    }
+}
