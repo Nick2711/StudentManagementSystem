@@ -80,7 +80,7 @@ namespace PRG_282_Project
         public AddStudent()
             {
                 InitializeComponent();
-                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0")); // Set once here
+                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyApp", "1.0")); 
          
         }
 
@@ -88,13 +88,13 @@ namespace PRG_282_Project
             {
                 try
                 {
-                    // Capture data from input fields
+                    
                     string studentID = StudentID.Text;
                     string name = Name.Text;
                     string age = Age.Text;
                     string course = CourseBox.SelectedItem?.ToString();
 
-                    // Validate inputs
+                   
                     if (string.IsNullOrWhiteSpace(studentID) || string.IsNullOrWhiteSpace(name) ||
                         string.IsNullOrWhiteSpace(age) || string.IsNullOrWhiteSpace(course))
                     {
@@ -102,13 +102,13 @@ namespace PRG_282_Project
                         return;
                     }
 
-                    // Format data as a comma-separated line
+                   
                     string studentData = $"{studentID},{name},{age},{course}";
 
-                    // Set up authorization for each request to prevent caching issues
+                  
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GitHubToken);
 
-                    // Fetch the existing file content and SHA
+                    
                     var existingContentResponse = await client.GetAsync(GitHubApiUrl);
                     existingContentResponse.EnsureSuccessStatusCode();
                     string existingContentJson = await existingContentResponse.Content.ReadAsStringAsync();
@@ -116,11 +116,11 @@ namespace PRG_282_Project
                     string existingContent = Encoding.UTF8.GetString(Convert.FromBase64String((string)existingContentData.content));
                     string sha = existingContentData.sha;
 
-                    // Append new student data to the existing content
+                   
                     string updatedContent = existingContent + Environment.NewLine + studentData;
                     string base64UpdatedContent = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatedContent));
 
-                    // Prepare the JSON payload for the GitHub API request
+                    
                     var payload = new
                     {
                         message = "Add new student",
@@ -128,16 +128,16 @@ namespace PRG_282_Project
                         sha = sha
                     };
 
-                    // Send the update request
+                    
                     var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
                     var updateResponse = await client.PutAsync(GitHubApiUrl, content);
 
-                    // Ensure the response is successful
+                    
                     updateResponse.EnsureSuccessStatusCode();
 
-                    MessageBox.Show("Student added successfully to GitHub!");
+                    MessageBox.Show("Student added successfully!");
 
-                    // Clear input fields after submission
+                   
                     StudentID.Clear();
                     Name.Clear();
                     Age.Clear();
@@ -156,7 +156,7 @@ namespace PRG_282_Project
 
         private void AddStudent_Load(object sender, EventArgs e)
         {
-            // Add items to CourseBox ComboBox
+            
             CourseBox.Items.Add("Bacholars of Computing");
             CourseBox.Items.Add("Diploma of Computing");
             CourseBox.Items.Add("Bacholars of Information systems");
