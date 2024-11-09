@@ -81,15 +81,19 @@ namespace PRG_282_Project
             DisplayInfoMid(new ViewStudents());
 
 
-<<<<<<< Updated upstream
-            MessageBox.Show("Hi there");
 
-            MessageBox.Show("Are you sure you want to");
-=======
+          
+
          
->>>>>>> Stashed changes
 
-            MessageBox.Show("Hi there DeaN ");
+
+           
+
+        private void ViewStudentsNavbtn_Click(object sender, EventArgs e)
+        {
+            DisplayInfoMid(new ViewStudents());
+
+
 
 
 
