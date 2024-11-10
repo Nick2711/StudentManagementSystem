@@ -1,13 +1,12 @@
 🌟 Student Summary Report 🌟
 
-Total Students: 14
-Average Age: 26,93
+Total Students: 8
+Average Age: 22,25
 Youngest Student Age: 18
-Oldest Student Age: 67
+Oldest Student Age: 28
 
 📘 Average Age by Course:
 - Bacholers of IT: 20,00 years
-- Bacholers of computing: 21,00 years
-- Bacholars of Information systems: 29,00 years
-- Bacholars of Computing: 22,00 years
-- Diploma of Computing: 40,67 years
+- Bacholers of computing: 19,00 years
+- Bacholars of Information systems: 21,50 years
+- Bacholars of Computing: 28,00 years
