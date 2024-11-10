@@ -51,7 +51,7 @@
             // panelSideMenu
             // 
             this.panelSideMenu.AutoScroll = true;
-            this.panelSideMenu.BackColor = System.Drawing.Color.DarkBlue;
+            this.panelSideMenu.BackColor = System.Drawing.Color.DarkCyan;
             this.panelSideMenu.Controls.Add(this.Exitbtn);
             this.panelSideMenu.Controls.Add(this.GenerateSummarybtn);
             this.panelSideMenu.Controls.Add(this.panelMediaSubmenu);
@@ -65,7 +65,7 @@
             // 
             // Exitbtn
             // 
-            this.Exitbtn.BackColor = System.Drawing.Color.Gray;
+            this.Exitbtn.BackColor = System.Drawing.Color.DarkCyan;
             this.Exitbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.Exitbtn.FlatAppearance.BorderSize = 0;
             this.Exitbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -84,11 +84,11 @@
             // 
             // GenerateSummarybtn
             // 
-            this.GenerateSummarybtn.BackColor = System.Drawing.Color.Gray;
+            this.GenerateSummarybtn.BackColor = System.Drawing.Color.DarkCyan;
             this.GenerateSummarybtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.GenerateSummarybtn.FlatAppearance.BorderSize = 0;
             this.GenerateSummarybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GenerateSummarybtn.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.GenerateSummarybtn.ForeColor = System.Drawing.Color.White;
             this.GenerateSummarybtn.Location = new System.Drawing.Point(0, 317);
             this.GenerateSummarybtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenerateSummarybtn.Name = "GenerateSummarybtn";
@@ -115,16 +115,16 @@
             // 
             // DeleteStudentNavbtn
             // 
-            this.DeleteStudentNavbtn.BackColor = System.Drawing.Color.Gray;
+            this.DeleteStudentNavbtn.BackColor = System.Drawing.Color.DarkCyan;
             this.DeleteStudentNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.DeleteStudentNavbtn.FlatAppearance.BorderSize = 0;
             this.DeleteStudentNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteStudentNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.DeleteStudentNavbtn.ForeColor = System.Drawing.Color.White;
             this.DeleteStudentNavbtn.Location = new System.Drawing.Point(0, 129);
             this.DeleteStudentNavbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DeleteStudentNavbtn.Name = "DeleteStudentNavbtn";
             this.DeleteStudentNavbtn.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.DeleteStudentNavbtn.Size = new System.Drawing.Size(163, 46);
+            this.DeleteStudentNavbtn.Size = new System.Drawing.Size(163, 47);
             this.DeleteStudentNavbtn.TabIndex = 4;
             this.DeleteStudentNavbtn.Text = "Delete Student";
             this.DeleteStudentNavbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -133,11 +133,11 @@
             // 
             // UpdateDetailsNavbtn
             // 
-            this.UpdateDetailsNavbtn.BackColor = System.Drawing.Color.Gray;
+            this.UpdateDetailsNavbtn.BackColor = System.Drawing.Color.DarkCyan;
             this.UpdateDetailsNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.UpdateDetailsNavbtn.FlatAppearance.BorderSize = 0;
             this.UpdateDetailsNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateDetailsNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.UpdateDetailsNavbtn.ForeColor = System.Drawing.Color.White;
             this.UpdateDetailsNavbtn.Location = new System.Drawing.Point(0, 84);
             this.UpdateDetailsNavbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UpdateDetailsNavbtn.Name = "UpdateDetailsNavbtn";
@@ -151,11 +151,11 @@
             // 
             // ViewStudentsNavbtn
             // 
-            this.ViewStudentsNavbtn.BackColor = System.Drawing.Color.Gray;
+            this.ViewStudentsNavbtn.BackColor = System.Drawing.Color.DarkCyan;
             this.ViewStudentsNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.ViewStudentsNavbtn.FlatAppearance.BorderSize = 0;
             this.ViewStudentsNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ViewStudentsNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.ViewStudentsNavbtn.ForeColor = System.Drawing.Color.White;
             this.ViewStudentsNavbtn.Location = new System.Drawing.Point(0, 41);
             this.ViewStudentsNavbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ViewStudentsNavbtn.Name = "ViewStudentsNavbtn";
@@ -169,11 +169,11 @@
             // 
             // AddStudentNavbtn
             // 
-            this.AddStudentNavbtn.BackColor = System.Drawing.Color.Gray;
+            this.AddStudentNavbtn.BackColor = System.Drawing.Color.DarkCyan;
             this.AddStudentNavbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.AddStudentNavbtn.FlatAppearance.BorderSize = 0;
             this.AddStudentNavbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddStudentNavbtn.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.AddStudentNavbtn.ForeColor = System.Drawing.Color.White;
             this.AddStudentNavbtn.Location = new System.Drawing.Point(0, 0);
             this.AddStudentNavbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddStudentNavbtn.Name = "AddStudentNavbtn";
@@ -187,7 +187,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkBlue;
+            this.panel2.BackColor = System.Drawing.Color.DarkCyan;
             this.panel2.Controls.Add(this.btnOptions);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -198,12 +198,12 @@
             // 
             // btnOptions
             // 
-            this.btnOptions.BackColor = System.Drawing.Color.Gray;
+            this.btnOptions.BackColor = System.Drawing.Color.DarkCyan;
             this.btnOptions.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnOptions.FlatAppearance.BorderSize = 0;
             this.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOptions.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnOptions.ForeColor = System.Drawing.Color.Black;
             this.btnOptions.Location = new System.Drawing.Point(0, 94);
             this.btnOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOptions.Name = "btnOptions";
@@ -216,7 +216,7 @@
             // 
             // DisplayInfoPanel
             // 
-            this.DisplayInfoPanel.BackColor = System.Drawing.SystemColors.Info;
+            this.DisplayInfoPanel.BackColor = System.Drawing.Color.White;
             this.DisplayInfoPanel.Controls.Add(this.pictureBox1);
             this.DisplayInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplayInfoPanel.Location = new System.Drawing.Point(163, 0);

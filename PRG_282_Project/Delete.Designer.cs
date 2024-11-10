@@ -77,6 +77,7 @@
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "Search for Student\'s ID ";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
             // 
             // DeleteForm
             // 
