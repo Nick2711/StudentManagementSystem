@@ -3,12 +3,5 @@
 7174,Liam,22,Bacholars of Information systems
 7175,Olivia,21,Bacholers of IT
 7188,Henry,21,Bacholars of Information systems
-7189,Harper,23,Bacholers of computing
 7190,Alexander,18,Bacholers of IT
-2123,Updasted,22,Bacholars of Computing
-6011,Niock,67,Diploma of Computing
-6066,Tests,44,Bacholars of Information systems
-1212,test,33,Diploma of Computing
-4444,Save,22,Diploma of Computing
-4586,josh,22,Bacholars of Computing
-5555,NicksTest,22,Bacholars of Computing
+7176,John,28,Bacholars of Computing
