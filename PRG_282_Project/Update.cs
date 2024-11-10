@@ -1,39 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using System.IO;
-using System.Net.Http;
 using Newtonsoft.Json;
-using System.Net.Http.Headers;
-
-
 
 namespace PRG_282_Project
 {
     public partial class Update : Form
     {
-
-        
-        string[] lines;
-        int studentIndex = -1;
-
+        private static readonly HttpClient client = new HttpClient();
+        private const string GitHubApiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
+        private string[] lines;
+        private int studentIndex = -1;
 
         public Update()
         {
             InitializeComponent();
         }
 
-
-        private void Form2_Load(object sender, EventArgs e)
+        private async void Form2_Load(object sender, EventArgs e)
         {
-            DisplayData(); 
+            await DisplayData();
         }
 
         private async void Searchbtn_Click(object sender, EventArgs e)
@@ -46,11 +36,8 @@ namespace PRG_282_Project
                 return;
             }
 
-            
-            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/Students.txt";
-            string fileContent = await client.GetStringAsync(url);
+            string fileContent = await client.GetStringAsync("https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/Students.txt");
             lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
             studentIndex = -1;
 
             for (int i = 0; i < lines.Length; i++)
@@ -65,8 +52,7 @@ namespace PRG_282_Project
                     string newAge = Prompt.ShowDialog("Enter new Age:", "Update Age", studentData[2]);
 
                     string[] courses = { "Bacholars of Computing", "Diploma of Computing", "Bacholars of Information systems" };
-                    string coursePrompt = "Enter new Course ID:\n1. Bacholars of Computing\n2. Diploma of Computing\n3. Bacholars of Information systems";
-                    string newCourseInput = Prompt.ShowDialog(coursePrompt, "Update Course", studentData[3]);
+                    string newCourseInput = Prompt.ShowDialog("Enter new Course ID:\n1. Bacholars of Computing\n2. Diploma of Computing\n3. Bacholars of Information systems", "Update Course", studentData[3]);
 
                     string newCourse = studentData[3];
                     if (newCourseInput == "1") newCourse = courses[0];
@@ -85,14 +71,12 @@ namespace PRG_282_Project
             }
         }
 
-
         private async Task<string> GetFileSha()
         {
-            string shaUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
             client.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
 
-            HttpResponseMessage response = await client.GetAsync(shaUrl);
+            HttpResponseMessage response = await client.GetAsync(GitHubApiUrl);
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
@@ -112,11 +96,9 @@ namespace PRG_282_Project
 
             try
             {
-                
                 string updatedContent = string.Join(Environment.NewLine, lines);
                 string base64Content = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatedContent));
 
-               
                 var payload = new
                 {
                     message = "Updated student information",
@@ -124,19 +106,16 @@ namespace PRG_282_Project
                     sha = await GetFileSha()
                 };
 
-                
-                string apiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
                 client.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
 
-               
                 var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
-                var response = await client.PutAsync(apiUrl, content);
+                var response = await client.PutAsync(GitHubApiUrl, content);
 
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Student information updated successfully.");
-                    DisplayData(); 
+                    await DisplayData();
                 }
                 else
                 {
@@ -149,49 +128,27 @@ namespace PRG_282_Project
             }
         }
 
-
-
-
-      
-
-        private static readonly HttpClient client = new HttpClient(); 
-        private async void DisplayData()
+        private async Task DisplayData()
         {
             try
             {
-
-                string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/refs/heads/main/PRG_282_Project/Students.txt";
-
-
-
-
+                string fileContent = await client.GetStringAsync("https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/Students.txt");
+                lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
-
 
                 dataGridView1.Columns.Add("StudentID", "Student ID");
                 dataGridView1.Columns.Add("Name", "Name");
                 dataGridView1.Columns.Add("Age", "Age");
                 dataGridView1.Columns.Add("Course", "Course");
 
-
-
-                string fileContent = await client.GetStringAsync(url);
-
-
-                string[] lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-
                 foreach (string line in lines)
                 {
-
                     string[] studentData = line.Split(',');
-
 
                     if (studentData.Length == 4)
                     {
-
                         dataGridView1.Rows.Add(studentData);
                     }
                     else
@@ -200,13 +157,10 @@ namespace PRG_282_Project
                     }
                 }
             }
-
             catch (HttpRequestException ex)
             {
                 MessageBox.Show($"An error occurred while fetching the file: {ex.Message}");
             }
-
-
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while reading the file: {ex.Message}");
@@ -222,12 +176,11 @@ namespace PRG_282_Project
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(SearchStudentID.Text, @"^\d{4}$"))
             {
-                MessageBox.Show("Please enter a 4 digit number");
+                MessageBox.Show("Please enter a 4-digit number.");
             }
         }
     }
 
-   
     public static class Prompt
     {
         public static string ShowDialog(string text, string caption, string defaultValue = "")
@@ -251,10 +204,5 @@ namespace PRG_282_Project
 
             return prompt.ShowDialog() == DialogResult.OK ? inputBox.Text : defaultValue;
         }
-
     }
-
-
-    
-
 }
