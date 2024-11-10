@@ -212,6 +212,19 @@ namespace PRG_282_Project
                 MessageBox.Show($"An error occurred while reading the file: {ex.Message}");
             }
         }
+
+        private void SearchStudentID_MouseClick(object sender, MouseEventArgs e)
+        {
+            SearchStudentID.Clear();
+        }
+
+        private void SearchStudentID_Validating(object sender, CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(SearchStudentID.Text, @"^\d{4}$"))
+            {
+                MessageBox.Show("Please enter a 4 digit number");
+            }
+        }
     }
 
     // Helper class for creating input dialogs

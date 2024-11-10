@@ -91,7 +91,7 @@ namespace PRG_282_Project
 
             private void UpdateDetailsNavbtn_Click(object sender, EventArgs e)
             {
-                DisplayInfoMid(new Form2());
+                DisplayInfoMid(new Update());
             }
 
             private void DeleteStudentNavbtn_Click(object sender, EventArgs e)
