@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace PRG_282_Project
 {
@@ -169,10 +170,7 @@ namespace PRG_282_Project
 
         }
 
-        private void Name_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void Age_TextChanged(object sender, EventArgs e)
         {
@@ -183,13 +181,22 @@ namespace PRG_282_Project
         {
 
         }
-      
 
+        private void StudentID_Validating(object sender, CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(StudentID.Text, @"^\d{4}$"))
+            {
+                MessageBox.Show("Please enter a 4 digit number for your Student ID");
+            }
+        }
 
-      
+        private void Name_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Regex.IsMatch(Name.Text, @"^[a-zA-Z\s]+$"))
+            {
+                MessageBox.Show("Please make sure there is no numbers or '@' symbols when entering your name");
 
-
-
-
+            }
+        }
     }
 }

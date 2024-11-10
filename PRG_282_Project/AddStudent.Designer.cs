@@ -46,16 +46,17 @@
             // StudentID
             // 
             this.StudentID.Location = new System.Drawing.Point(325, 127);
-            this.StudentID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StudentID.Margin = new System.Windows.Forms.Padding(4);
             this.StudentID.Name = "StudentID";
             this.StudentID.Size = new System.Drawing.Size(251, 22);
             this.StudentID.TabIndex = 0;
             this.StudentID.TextChanged += new System.EventHandler(this.StudentID_TextChanged);
+            this.StudentID.Validating += new System.ComponentModel.CancelEventHandler(this.StudentID_Validating);
             // 
             // Age
             // 
             this.Age.Location = new System.Drawing.Point(325, 314);
-            this.Age.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Age.Margin = new System.Windows.Forms.Padding(4);
             this.Age.Name = "Age";
             this.Age.Size = new System.Drawing.Size(251, 22);
             this.Age.TabIndex = 1;
@@ -64,16 +65,16 @@
             // Name
             // 
             this.Name.Location = new System.Drawing.Point(325, 214);
-            this.Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name.Margin = new System.Windows.Forms.Padding(4);
             this.Name.Name = "Name";
             this.Name.Size = new System.Drawing.Size(251, 22);
             this.Name.TabIndex = 2;
-            this.Name.TextChanged += new System.EventHandler(this.Name_TextChanged);
+            this.Name.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(325, 127);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(251, 22);
             this.textBox1.TabIndex = 0;
@@ -81,7 +82,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(325, 314);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(251, 22);
             this.textBox2.TabIndex = 1;
@@ -89,7 +90,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(325, 214);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(251, 22);
             this.textBox3.TabIndex = 2;
@@ -146,7 +147,7 @@
             // 
             this.CourseBox.FormattingEnabled = true;
             this.CourseBox.Location = new System.Drawing.Point(325, 406);
-            this.CourseBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CourseBox.Margin = new System.Windows.Forms.Padding(4);
             this.CourseBox.Name = "CourseBox";
             this.CourseBox.Size = new System.Drawing.Size(251, 24);
             this.CourseBox.TabIndex = 8;
@@ -156,7 +157,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(325, 406);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(251, 24);
             this.comboBox1.TabIndex = 8;
@@ -165,7 +166,7 @@
             // 
             this.StudentSubmitbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StudentSubmitbtn.Location = new System.Drawing.Point(360, 480);
-            this.StudentSubmitbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StudentSubmitbtn.Margin = new System.Windows.Forms.Padding(4);
             this.StudentSubmitbtn.Name = "StudentSubmitbtn";
             this.StudentSubmitbtn.Size = new System.Drawing.Size(187, 60);
             this.StudentSubmitbtn.TabIndex = 9;
@@ -192,7 +193,7 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddStudent";
             this.Load += new System.EventHandler(this.AddStudent_Load);
             this.ResumeLayout(false);
