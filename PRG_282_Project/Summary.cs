@@ -36,7 +36,6 @@ namespace PRG_282_Project
         {
             try
             {
-              
                 string studentData = await FetchFileFromGitHub(StudentsFileUrl);
                 if (studentData == null)
                 {
@@ -44,26 +43,71 @@ namespace PRG_282_Project
                     return;
                 }
 
-               
-                var studentRecords = studentData.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                int totalStudents = studentRecords.Length;
-                double averageAge = studentRecords
-                    .Select(record => record.Split(','))
-                    .Where(data => data.Length == 4 && int.TryParse(data[2], out _))
-                    .Select(data => int.Parse(data[2]))
-                    .Average();
+                var studentRecords = studentData.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)
+                                                .Select(record => record.Split(','))
+                                                .Where(data => data.Length == 4 && int.TryParse(data[2], out _))
+                                                .Select(data => new
+                                                {
+                                                    Id = data[0],
+                                                    Name = data[1],
+                                                    Age = int.Parse(data[2]),
+                                                    Course = data[3]
+                                                })
+                                                .ToList();
 
-               
-                string summaryText = $"Student Summary Report\n\n" +
-                                     $"Total Students: {totalStudents}\n" +
-                                     $"Average Age: {averageAge:F2}\n";
+                if (!studentRecords.Any())
+                {
+                    MessageBox.Show("No valid student data found.");
+                    return;
+                }
 
-               
+                int totalStudents = studentRecords.Count;
+                double averageAge = studentRecords.Average(s => s.Age);
+                int youngestAge = studentRecords.Min(s => s.Age);
+                int oldestAge = studentRecords.Max(s => s.Age);
+
+                var averageAgeByCourse = studentRecords
+                    .GroupBy(s => s.Course)
+                    .Select(group => new { Course = group.Key, AverageAge = group.Average(s => s.Age) })
+                    .ToList();
+
+                StringBuilder summaryText = new StringBuilder();
+                summaryText.AppendLine("🌟 Student Summary Report 🌟\n");
+                summaryText.AppendLine($"Total Students: {totalStudents}");
+                summaryText.AppendLine($"Average Age: {averageAge:F2}");
+                summaryText.AppendLine($"Youngest Student Age: {youngestAge}");
+                summaryText.AppendLine($"Oldest Student Age: {oldestAge}\n");
+
+                summaryText.AppendLine("📘 Average Age by Course:");
+                foreach (var course in averageAgeByCourse)
+                {
+                    summaryText.AppendLine($"- {course.Course}: {course.AverageAge:F2} years");
+                }
+
                 summaryRichTextBox.Clear();
-                summaryRichTextBox.AppendText(summaryText);
+                summaryRichTextBox.SelectionFont = new Font("Arial", 14, FontStyle.Bold);
+                summaryRichTextBox.SelectionColor = Color.DarkBlue;
+                summaryRichTextBox.AppendText("🌟 Student Summary Report 🌟\n\n");
 
-               
-                bool isSaved = await SaveSummaryToGitHub(summaryText);
+                summaryRichTextBox.SelectionFont = new Font("Arial", 12, FontStyle.Regular);
+                summaryRichTextBox.SelectionColor = Color.Black;
+                summaryRichTextBox.AppendText($"Total Students: {totalStudents}\n");
+                summaryRichTextBox.AppendText($"Average Age: {averageAge:F2}\n");
+                summaryRichTextBox.AppendText($"Youngest Student Age: {youngestAge}\n");
+                summaryRichTextBox.AppendText($"Oldest Student Age: {oldestAge}\n\n");
+
+                summaryRichTextBox.SelectionFont = new Font("Arial", 12, FontStyle.Bold);
+                summaryRichTextBox.SelectionColor = Color.DarkGreen;
+                summaryRichTextBox.AppendText("📘 Average Age by Course:\n");
+
+                summaryRichTextBox.SelectionFont = new Font("Arial", 12, FontStyle.Regular);
+                summaryRichTextBox.SelectionColor = Color.Black;
+                foreach (var course in averageAgeByCourse)
+                {
+                    summaryRichTextBox.AppendText($"- {course.Course}: {course.AverageAge:F2} years\n");
+                }
+
+                bool isSaved = await SaveSummaryToGitHub(summaryText.ToString());
                 if (isSaved)
                 {
                     MessageBox.Show("Summary saved successfully.");
@@ -74,7 +118,6 @@ namespace PRG_282_Project
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
-
 
         private async Task<string> FetchFileFromGitHub(string fileUrl)
         {
@@ -107,13 +150,9 @@ namespace PRG_282_Project
         {
             try
             {
-                
                 string base64Content = Convert.ToBase64String(Encoding.UTF8.GetBytes(content));
-
-                
                 string fileSha = await GetFileSha();
 
-                
                 var payload = new
                 {
                     message = "Update summary report",
@@ -121,11 +160,9 @@ namespace PRG_282_Project
                     sha = fileSha
                 };
 
-                
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
                 httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
 
-                
                 var requestContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await httpClient.PutAsync(SummaryFileApiUrl, requestContent);
 
