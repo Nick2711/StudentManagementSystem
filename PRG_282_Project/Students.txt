@@ -1,6 +1,5 @@
 7172,Viljoen,9,Bacholers of IT
 7173,Emma,19,Bacholers of computing
-7174,Liam,22,Bacholars of Information systems
 7175,Olivia,21,Bacholers of IT
 7188,Henry,21,Bacholars of Information systems
 7190,Alexander,18,Bacholers of IT
