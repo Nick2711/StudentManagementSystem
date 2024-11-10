@@ -1,0 +1,42 @@
+In this project, we decided to take a unique approach by accessing and managing student data directly through GitHub instead of using local storage. 
+This approach allowed us to add a layer of complexity and innovation, as it required us to incorporate GitHub’s REST API for reading, updating,
+and saving data files in the repository. This made the project more challenging and exciting, while still meeting the core requirements of handling student records
+and generating summaries.
+
+By choosing to access files through GitHub, we gained hands-on experience with API authentication, JSON data handling, and asynchronous data operations.
+ It also provided us with a secure, centralized way to manage project data. 
+Since GitHub restricts access to its content for security reasons, a Personal Access Token (PAT) is required to enable the application to access the repository.
+
+Setting Up the Environment Variable
+Due to our chosen approach, an environment variable is required to securely store the GitHub PAT, allowing you to use our project correctly.
+ This token is provided separately in a text document(Token.txt), which you can reference to set up your system securely.
+
+To ensure the application runs smoothly, please follow these steps to set up the environment variable on your computer:
+
+Create the Environment Variable:
+
+Open the Start menu and search for Environment Variables.
+Select Edit the system environment variables.
+Under the Advanced tab.
+In System Properties, click Environment Variables.
+Under User Variables, click New.
+Set the Variable name to GITHUB_TOKEN and paste the token from the text document into the Variable value field.
+Click OK to save.
+
+This setup ensures secure access to GitHub from the application, with the token kept private through the environment variable. 
+By using this approach, we’ve implemented a challenging and effective solution for data management that leverages cloud-based storage with GitHub,
+ all while maintaining a high standard of security.
+
+
+Also in order to run this project successfully, please make sure to install the Newtonsoft.Json extension in Visual Studio.
+This package is essential for handling JSON data in our application, particularly for parsing responses from GitHub’s API and constructing requests when updating files.
+
+How to Install Newtonsoft.Json in Visual Studio
+Open Visual Studio.
+Go to Tools > NuGet Package Manager > Manage NuGet Packages for Solution…
+In the Browse tab, search for Newtonsoft.Json.
+Select Newtonsoft.Json from the search results.
+Choose the project and click Install.
+Follow any prompts to complete the installation.
+By installing Newtonsoft.Json, you'll ensure the project can process JSON data correctly, which is critical for interacting with GitHub's API 
+for data storage and retrieval.
