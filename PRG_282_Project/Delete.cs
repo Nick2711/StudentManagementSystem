@@ -129,7 +129,7 @@ namespace PRG_282_Project
 
         private async void SearchStudentIDTextBox_Click(object sender, EventArgs e)
         {
-            string searchID = textBox1.Text;
+            string searchID = SearchOnDelete.Text;
 
             if (string.IsNullOrWhiteSpace(searchID))
             {
@@ -194,9 +194,17 @@ namespace PRG_282_Project
             LoadStudentData();
         }
 
-        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        private void SearchOnDelete_MouseClick(object sender, MouseEventArgs e)
         {
-            textBox1.Clear();
+            SearchOnDelete.Clear();
+        }
+
+        private void SearchOnDelete_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(SearchOnDelete.Text, @"^\d{4}$"))
+            {
+                MessageBox.Show("Please enter a 4 digit number");
+            }
         }
     }
 }

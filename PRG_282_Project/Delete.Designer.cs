@@ -31,7 +31,7 @@
             this.studentDataGridView = new System.Windows.Forms.DataGridView();
             this.SearchStudentIDTextBox = new System.Windows.Forms.Button();
             this.Deletebtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SearchOnDelete = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@
             // 
             // SearchStudentIDTextBox
             // 
+            this.SearchStudentIDTextBox.Font = new System.Drawing.Font("Rockwell Nova", 10.2F, System.Drawing.FontStyle.Bold);
             this.SearchStudentIDTextBox.Location = new System.Drawing.Point(37, 129);
             this.SearchStudentIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchStudentIDTextBox.Name = "SearchStudentIDTextBox";
@@ -59,6 +60,7 @@
             // 
             // Deletebtn
             // 
+            this.Deletebtn.Font = new System.Drawing.Font("Rockwell Nova", 10.2F, System.Drawing.FontStyle.Bold);
             this.Deletebtn.Location = new System.Drawing.Point(37, 337);
             this.Deletebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Deletebtn.Name = "Deletebtn";
@@ -68,24 +70,25 @@
             this.Deletebtn.UseVisualStyleBackColor = true;
             this.Deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
             // 
-            // textBox1
+            // SearchOnDelete
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 103);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 22);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Search for Student\'s ID ";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
+            this.SearchOnDelete.Location = new System.Drawing.Point(12, 103);
+            this.SearchOnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SearchOnDelete.Name = "SearchOnDelete";
+            this.SearchOnDelete.Size = new System.Drawing.Size(212, 22);
+            this.SearchOnDelete.TabIndex = 4;
+            this.SearchOnDelete.Text = "Search for Student\'s ID ";
+            this.SearchOnDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SearchOnDelete.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SearchOnDelete_MouseClick);
+            this.SearchOnDelete.Validating += new System.ComponentModel.CancelEventHandler(this.SearchOnDelete_Validating);
             // 
             // DeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSlateGray;
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(715, 580);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.SearchOnDelete);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.SearchStudentIDTextBox);
             this.Controls.Add(this.studentDataGridView);
@@ -104,6 +107,6 @@
         private System.Windows.Forms.DataGridView studentDataGridView;
         private System.Windows.Forms.Button SearchStudentIDTextBox;
         private System.Windows.Forms.Button Deletebtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SearchOnDelete;
     }
 }
