@@ -36,7 +36,7 @@ namespace PRG_282_Project
         {
             try
             {
-                // Fetch the latest student data from GitHub to ensure up-to-date summary calculation
+              
                 string studentData = await FetchFileFromGitHub(StudentsFileUrl);
                 if (studentData == null)
                 {
@@ -44,7 +44,7 @@ namespace PRG_282_Project
                     return;
                 }
 
-                // Split data into records, count total students, and calculate average age
+               
                 var studentRecords = studentData.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 int totalStudents = studentRecords.Length;
                 double averageAge = studentRecords
@@ -53,16 +53,16 @@ namespace PRG_282_Project
                     .Select(data => int.Parse(data[2]))
                     .Average();
 
-                // Prepare summary text for display
+               
                 string summaryText = $"Student Summary Report\n\n" +
                                      $"Total Students: {totalStudents}\n" +
                                      $"Average Age: {averageAge:F2}\n";
 
-                // Clear and update RichTextBox display with the new summary
+               
                 summaryRichTextBox.Clear();
                 summaryRichTextBox.AppendText(summaryText);
 
-                // Save the latest summary to GitHub
+               
                 bool isSaved = await SaveSummaryToGitHub(summaryText);
                 if (isSaved)
                 {

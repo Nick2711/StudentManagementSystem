@@ -33,7 +33,7 @@ namespace PRG_282_Project
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            DisplayData(); // Display the data when the form loads
+            DisplayData(); 
         }
 
         private async void Searchbtn_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace PRG_282_Project
                 return;
             }
 
-            // Fetch data from GitHub
+            
             string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/Students.txt";
             string fileContent = await client.GetStringAsync(url);
             lines = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -112,11 +112,11 @@ namespace PRG_282_Project
 
             try
             {
-                // Encode updated content in Base64
+                
                 string updatedContent = string.Join(Environment.NewLine, lines);
                 string base64Content = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatedContent));
 
-                // Prepare the GitHub API payload
+               
                 var payload = new
                 {
                     message = "Updated student information",
@@ -124,19 +124,19 @@ namespace PRG_282_Project
                     sha = await GetFileSha()
                 };
 
-                // Set up the request
+                
                 string apiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("GITHUB_TOKEN"));
                 client.DefaultRequestHeaders.UserAgent.ParseAdd("MyApp");
 
-                // Send PUT request to update file on GitHub
+               
                 var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
                 var response = await client.PutAsync(apiUrl, content);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Student information updated successfully on GitHub.");
-                    DisplayData(); // Refresh the DataGridView with updated data
+                    MessageBox.Show("Student information updated successfully.");
+                    DisplayData(); 
                 }
                 else
                 {
@@ -152,7 +152,7 @@ namespace PRG_282_Project
 
 
 
-        // Method to display data in DataGridView
+      
 
         private static readonly HttpClient client = new HttpClient(); 
         private async void DisplayData()
@@ -227,7 +227,7 @@ namespace PRG_282_Project
         }
     }
 
-    // Helper class for creating input dialogs
+   
     public static class Prompt
     {
         public static string ShowDialog(string text, string caption, string defaultValue = "")
