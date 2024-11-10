@@ -32,15 +32,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.Deletebtn = new System.Windows.Forms.Button();
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 =======
             this.SearchDeleteText = new System.Windows.Forms.TextBox();
-=======
-            this.SearchOnDelete = new System.Windows.Forms.TextBox();
->>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGridView)).BeginInit();
 >>>>>>> Stashed changes
             this.SuspendLayout();
@@ -57,26 +53,17 @@
             this.dataGridView1.TabIndex = 0;
 =======
             this.studentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-<<<<<<< Updated upstream
             this.studentDataGridView.Location = new System.Drawing.Point(235, 28);
-=======
-            this.studentDataGridView.Location = new System.Drawing.Point(222, 12);
->>>>>>> Stashed changes
             this.studentDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.studentDataGridView.Name = "studentDataGridView";
             this.studentDataGridView.RowHeadersWidth = 51;
             this.studentDataGridView.RowTemplate.Height = 24;
-<<<<<<< Updated upstream
             this.studentDataGridView.Size = new System.Drawing.Size(468, 416);
-=======
-            this.studentDataGridView.Size = new System.Drawing.Size(456, 460);
->>>>>>> Stashed changes
             this.studentDataGridView.TabIndex = 0;
 >>>>>>> Stashed changes
             // 
             // button1
             // 
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             this.button1.Location = new System.Drawing.Point(519, 259);
             this.button1.Name = "button1";
@@ -94,13 +81,6 @@
             this.SearchStudentIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchStudentIDTextBox.Name = "SearchStudentIDTextBox";
             this.SearchStudentIDTextBox.Size = new System.Drawing.Size(159, 48);
-=======
-            this.SearchStudentIDTextBox.Font = new System.Drawing.Font("Rockwell Nova", 8.2F, System.Drawing.FontStyle.Bold);
-            this.SearchStudentIDTextBox.Location = new System.Drawing.Point(29, 116);
-            this.SearchStudentIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchStudentIDTextBox.Name = "SearchStudentIDTextBox";
-            this.SearchStudentIDTextBox.Size = new System.Drawing.Size(159, 68);
->>>>>>> Stashed changes
             this.SearchStudentIDTextBox.TabIndex = 1;
             this.SearchStudentIDTextBox.Text = "Search";
             this.SearchStudentIDTextBox.UseVisualStyleBackColor = true;
@@ -108,14 +88,8 @@
             // 
             // Deletebtn
             // 
-<<<<<<< Updated upstream
             this.Deletebtn.Font = new System.Drawing.Font("Rockwell Nova", 10.2F, System.Drawing.FontStyle.Bold);
             this.Deletebtn.Location = new System.Drawing.Point(51, 315);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
->>>>>>> Stashed changes
-=======
-            this.Deletebtn.Font = new System.Drawing.Font("Rockwell Nova", 8.2F, System.Drawing.FontStyle.Bold);
-            this.Deletebtn.Location = new System.Drawing.Point(29, 359);
             this.Deletebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 >>>>>>> Stashed changes
             this.Deletebtn.Name = "Deletebtn";
@@ -124,7 +98,6 @@
             this.Deletebtn.Text = "Delete";
             this.Deletebtn.UseVisualStyleBackColor = true;
             // 
-<<<<<<< Updated upstream
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(47, 259);
@@ -152,25 +125,11 @@
             this.SearchDeleteText.Text = "Search for Student\'s ID ";
             this.SearchDeleteText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 >>>>>>> Stashed changes
-=======
-            // SearchOnDelete
-            // 
-            this.SearchOnDelete.Location = new System.Drawing.Point(12, 90);
-            this.SearchOnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SearchOnDelete.Name = "SearchOnDelete";
-            this.SearchOnDelete.Size = new System.Drawing.Size(196, 22);
-            this.SearchOnDelete.TabIndex = 4;
-            this.SearchOnDelete.Text = "Search for Student\'s ID ";
-            this.SearchOnDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SearchOnDelete.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SearchOnDelete_MouseClick);
-            this.SearchOnDelete.Validating += new System.ComponentModel.CancelEventHandler(this.SearchOnDelete_Validating);
->>>>>>> Stashed changes
             // 
             // Delete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(714, 580);
             this.Controls.Add(this.textBox1);
@@ -182,11 +141,6 @@
 =======
             this.ClientSize = new System.Drawing.Size(715, 580);
             this.Controls.Add(this.SearchDeleteText);
-=======
-            this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(715, 580);
-            this.Controls.Add(this.SearchOnDelete);
->>>>>>> Stashed changes
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.SearchStudentIDTextBox);
             this.Controls.Add(this.studentDataGridView);
@@ -206,14 +160,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Deletebtn;
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
 =======
         private System.Windows.Forms.TextBox SearchDeleteText;
->>>>>>> Stashed changes
-=======
-        private System.Windows.Forms.TextBox SearchOnDelete;
 >>>>>>> Stashed changes
     }
 }
