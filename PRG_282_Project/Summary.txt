@@ -1,4 +1,4 @@
 Student Summary Report
 
-Total Students: 16
-Average Age: 167,56
+Total Students: 15
+Average Age: 171,93
