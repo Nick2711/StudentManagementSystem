@@ -1,6 +1,6 @@
 ﻿namespace PRG_282_Project
 {
-    partial class Form2
+    partial class Update
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(588, 234);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+
             // 
             // Updatebtn
             // 

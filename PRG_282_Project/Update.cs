@@ -17,7 +17,7 @@ using System.Net.Http.Headers;
 
 namespace PRG_282_Project
 {
-    public partial class Form2 : Form
+    public partial class Update : Form
     {
 
         //string filePath = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
@@ -25,7 +25,7 @@ namespace PRG_282_Project
         int studentIndex = -1;
 
 
-        public Form2()
+        public Update()
         {
             InitializeComponent();
         }
