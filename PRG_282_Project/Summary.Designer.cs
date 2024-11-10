@@ -34,10 +34,11 @@
             // 
             // GenerateSumbtn
             // 
-            this.GenerateSumbtn.Location = new System.Drawing.Point(200, 340);
-            this.GenerateSumbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.GenerateSumbtn.Font = new System.Drawing.Font("Rockwell Nova", 10.2F, System.Drawing.FontStyle.Bold);
+            this.GenerateSumbtn.Location = new System.Drawing.Point(267, 418);
+            this.GenerateSumbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GenerateSumbtn.Name = "GenerateSumbtn";
-            this.GenerateSumbtn.Size = new System.Drawing.Size(153, 42);
+            this.GenerateSumbtn.Size = new System.Drawing.Size(204, 52);
             this.GenerateSumbtn.TabIndex = 1;
             this.GenerateSumbtn.Text = "Generate Summary";
             this.GenerateSumbtn.UseVisualStyleBackColor = true;
@@ -45,21 +46,22 @@
             // 
             // summaryRichTextBox
             // 
-            this.summaryRichTextBox.Location = new System.Drawing.Point(12, 31);
+            this.summaryRichTextBox.Location = new System.Drawing.Point(16, 38);
+            this.summaryRichTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.summaryRichTextBox.Name = "summaryRichTextBox";
-            this.summaryRichTextBox.Size = new System.Drawing.Size(512, 304);
+            this.summaryRichTextBox.Size = new System.Drawing.Size(681, 373);
             this.summaryRichTextBox.TabIndex = 2;
             this.summaryRichTextBox.Text = "";
             // 
             // Summary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSlateGray;
-            this.ClientSize = new System.Drawing.Size(536, 471);
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.ClientSize = new System.Drawing.Size(715, 580);
             this.Controls.Add(this.summaryRichTextBox);
             this.Controls.Add(this.GenerateSumbtn);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Summary";
             this.Text = "Summary";
             this.ResumeLayout(false);
