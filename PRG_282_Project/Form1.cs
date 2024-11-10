@@ -127,7 +127,13 @@ namespace PRG_282_Project
             {
                 DisplayInfoMid(new Summary());
             }
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
         }
+=======
+
+       
+    }
+>>>>>>> Stashed changes
     }
 }
