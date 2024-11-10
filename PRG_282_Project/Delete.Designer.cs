@@ -37,21 +37,21 @@
             // studentDataGridView
             // 
             this.studentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.studentDataGridView.Location = new System.Drawing.Point(178, 11);
-            this.studentDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.studentDataGridView.Location = new System.Drawing.Point(255, 45);
+            this.studentDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.studentDataGridView.Name = "studentDataGridView";
             this.studentDataGridView.RowHeadersWidth = 51;
             this.studentDataGridView.RowTemplate.Height = 24;
-            this.studentDataGridView.Size = new System.Drawing.Size(336, 399);
+            this.studentDataGridView.Size = new System.Drawing.Size(448, 491);
             this.studentDataGridView.TabIndex = 0;
             // 
             // Deletebtn
             // 
             this.Deletebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.Deletebtn.Location = new System.Drawing.Point(21, 164);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Deletebtn.Location = new System.Drawing.Point(43, 242);
+            this.Deletebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(119, 55);
+            this.Deletebtn.Size = new System.Drawing.Size(159, 68);
             this.Deletebtn.TabIndex = 2;
             this.Deletebtn.Text = "Delete";
             this.Deletebtn.UseVisualStyleBackColor = true;
@@ -61,23 +61,27 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.label1.Location = new System.Drawing.Point(36, 54);
+            this.label1.Font = new System.Drawing.Font("Rockwell Nova", 8F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(-1, 93);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(478, 13);
+            this.label1.Size = new System.Drawing.Size(249, 76);
             this.label1.TabIndex = 3;
-            this.label1.Text = "select the left most columns small arrow button to select the entire student row " +
-    "and then click delete ";
+            this.label1.Text = "1. Select the small arrow button.\r\n(Left most column)\r\n In order to select a stud" +
+    "ent. \r\n2. Then Click Delete Button";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DeleteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(536, 471);
+            this.ClientSize = new System.Drawing.Size(715, 580);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.studentDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DeleteForm";
             this.Text = "Delete";
             this.Load += new System.EventHandler(this.DeleteForm_Load_1);
