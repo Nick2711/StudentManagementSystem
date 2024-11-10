@@ -38,20 +38,20 @@
             // studentDataGridView
             // 
             this.studentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.studentDataGridView.Location = new System.Drawing.Point(35, 10);
-            this.studentDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.studentDataGridView.Location = new System.Drawing.Point(230, 12);
+            this.studentDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.studentDataGridView.Name = "studentDataGridView";
             this.studentDataGridView.RowHeadersWidth = 51;
             this.studentDataGridView.RowTemplate.Height = 24;
-            this.studentDataGridView.Size = new System.Drawing.Size(473, 196);
+            this.studentDataGridView.Size = new System.Drawing.Size(448, 491);
             this.studentDataGridView.TabIndex = 0;
             // 
             // SearchStudentIDTextBox
             // 
-            this.SearchStudentIDTextBox.Location = new System.Drawing.Point(36, 211);
-            this.SearchStudentIDTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchStudentIDTextBox.Location = new System.Drawing.Point(37, 129);
+            this.SearchStudentIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchStudentIDTextBox.Name = "SearchStudentIDTextBox";
-            this.SearchStudentIDTextBox.Size = new System.Drawing.Size(119, 55);
+            this.SearchStudentIDTextBox.Size = new System.Drawing.Size(159, 68);
             this.SearchStudentIDTextBox.TabIndex = 1;
             this.SearchStudentIDTextBox.Text = "Search";
             this.SearchStudentIDTextBox.UseVisualStyleBackColor = true;
@@ -59,10 +59,10 @@
             // 
             // Deletebtn
             // 
-            this.Deletebtn.Location = new System.Drawing.Point(389, 211);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2);
+            this.Deletebtn.Location = new System.Drawing.Point(37, 337);
+            this.Deletebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(119, 55);
+            this.Deletebtn.Size = new System.Drawing.Size(159, 68);
             this.Deletebtn.TabIndex = 2;
             this.Deletebtn.Text = "Delete";
             this.Deletebtn.UseVisualStyleBackColor = true;
@@ -70,10 +70,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(186, 229);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(12, 103);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 20);
+            this.textBox1.Size = new System.Drawing.Size(212, 22);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "Search for Student\'s ID ";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -81,15 +81,15 @@
             // 
             // DeleteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSlateGray;
-            this.ClientSize = new System.Drawing.Size(536, 471);
+            this.ClientSize = new System.Drawing.Size(715, 580);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.SearchStudentIDTextBox);
             this.Controls.Add(this.studentDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DeleteForm";
             this.Text = "Delete";
             this.Load += new System.EventHandler(this.DeleteForm_Load_1);
