@@ -194,6 +194,9 @@ namespace PRG_282_Project
             LoadStudentData();
         }
 
-      
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox1.Clear();
+        }
     }
 }
