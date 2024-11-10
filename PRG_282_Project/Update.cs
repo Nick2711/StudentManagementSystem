@@ -20,7 +20,7 @@ namespace PRG_282_Project
     public partial class Update : Form
     {
 
-        //string filePath = @"C:\Belgium Campus\PRG282_Project\StudentManagementSystem\PRG_282_Project\PRG282.txt";
+        
         string[] lines;
         int studentIndex = -1;
 

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using static System.Windows.Forms.LinkLabel;
 
 namespace PRG_282_Project
 {
@@ -15,7 +14,6 @@ namespace PRG_282_Project
         private static readonly HttpClient httpClient = new HttpClient();
         private const string GitHubApiUrl = "https://api.github.com/repos/Nick2711/StudentManagementSystem/contents/PRG_282_Project/Students.txt";
         private string[] studentRecords;
-        private int selectedStudentIndex = -1;
 
         public DeleteForm()
         {
@@ -59,10 +57,7 @@ namespace PRG_282_Project
         {
             try
             {
-                
                 string base64Content = Convert.ToBase64String(Encoding.UTF8.GetBytes(content));
-
-               
                 var payload = new
                 {
                     message = "Delete student record",
@@ -70,19 +65,10 @@ namespace PRG_282_Project
                     sha = await FetchFileSha()
                 };
 
-                
                 var requestContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await httpClient.PutAsync(GitHubApiUrl, requestContent);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show($"Error updating data: {response.ReasonPhrase}");
-                    return false;
-                }
+                return response.IsSuccessStatusCode;
             }
             catch (Exception ex)
             {
@@ -107,7 +93,6 @@ namespace PRG_282_Project
                 studentDataGridView.Columns.Add("Age", "Age");
                 studentDataGridView.Columns.Add("Course", "Course");
 
-                
                 foreach (string line in studentRecords)
                 {
                     string[] studentData = line.Split(',');
@@ -123,88 +108,37 @@ namespace PRG_282_Project
             }
         }
 
-      
-     
-        
-
-        private async void SearchStudentIDTextBox_Click(object sender, EventArgs e)
-        {
-            string searchID = SearchOnDelete.Text;
-
-            if (string.IsNullOrWhiteSpace(searchID))
-            {
-                MessageBox.Show("Please enter a Student ID to search.");
-                return;
-            }
-
-            
-            string url = "https://raw.githubusercontent.com/Nick2711/StudentManagementSystem/main/PRG_282_Project/Students.txt";
-            string fileContent = await httpClient.GetStringAsync(url);
-            studentRecords = fileContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-            selectedStudentIndex = -1;
-
-            for (int i = 0; i < studentRecords.Length; i++)
-            {
-                string[] studentData = studentRecords[i].Split(',');
-
-                if (studentData[0] == searchID)
-                {
-                    selectedStudentIndex = i;
-                    studentDataGridView.Rows.Add(studentData); 
-                    MessageBox.Show("Student found. You can delete this student by clicking the Delete button.");
-                    return;
-                }
-            }
-
-            if (selectedStudentIndex == -1)
-            {
-                MessageBox.Show("Student ID not found.");
-            }
-        }
-
         private async void Deletebtn_Click(object sender, EventArgs e)
         {
-            if (selectedStudentIndex == -1)
+            if (studentDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please search for a student to delete.");
+                MessageBox.Show("Please select a student to delete.");
                 return;
             }
 
-           
+            var selectedRow = studentDataGridView.SelectedRows[0];
+            string studentID = selectedRow.Cells["StudentID"].Value.ToString();
+
             var confirmResult = MessageBox.Show("Are you sure you want to delete this student?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-               
-                studentRecords = studentRecords.Where((line, index) => index != selectedStudentIndex).ToArray();
+                studentRecords = studentRecords.Where(line => !line.StartsWith(studentID + ",")).ToArray();
                 string updatedContent = string.Join(Environment.NewLine, studentRecords);
 
-                
                 bool success = await UpdateStudentDataOnGitHub(updatedContent);
                 if (success)
                 {
                     MessageBox.Show("Student deleted successfully.");
-                    selectedStudentIndex = -1;
-                    LoadStudentData(); 
+                    LoadStudentData();
                 }
             }
         }
 
+    
+
         private void DeleteForm_Load_1(object sender, EventArgs e)
         {
             LoadStudentData();
-        }
-
-        private void SearchOnDelete_MouseClick(object sender, MouseEventArgs e)
-        {
-            SearchOnDelete.Clear();
-        }
-
-        private void SearchOnDelete_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(SearchOnDelete.Text, @"^\d{4}$"))
-            {
-                MessageBox.Show("Please enter a 4 digit number");
-            }
         }
     }
 }
