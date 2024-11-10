@@ -5,4 +5,3 @@
 7188,Henry,21,Bacholars of Information systems
 7190,Alexander,18,Bacholers of IT
 2123,Updasted,22,Bacholars of Computing
-4586,josh,22,Bacholars of Computing
