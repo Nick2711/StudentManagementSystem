@@ -11,5 +11,5 @@
 6011,Niock,67,Diploma of Computing
 6066,Tests,44,Bacholars of Information systems
 1212,test,33,Diploma of Computing
-4444,Save,2222,Diploma of Computing
+4444,Save,22,Diploma of Computing
 4586,josh,22,Bacholars of Computing
