@@ -35,7 +35,7 @@
             // GenerateSumbtn
             // 
             this.GenerateSumbtn.Location = new System.Drawing.Point(200, 340);
-            this.GenerateSumbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GenerateSumbtn.Margin = new System.Windows.Forms.Padding(2);
             this.GenerateSumbtn.Name = "GenerateSumbtn";
             this.GenerateSumbtn.Size = new System.Drawing.Size(153, 42);
             this.GenerateSumbtn.TabIndex = 1;
@@ -55,10 +55,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(536, 471);
             this.Controls.Add(this.summaryRichTextBox);
             this.Controls.Add(this.GenerateSumbtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Summary";
             this.Text = "Summary";
             this.ResumeLayout(false);
