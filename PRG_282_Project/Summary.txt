@@ -1,7 +1,7 @@
 🌟 Student Summary Report 🌟
 
-Total Students: 7
-Average Age: 20,57
+Total Students: 6
+Average Age: 19,33
 Youngest Student Age: 9
 Oldest Student Age: 28
 
