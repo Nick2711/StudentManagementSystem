@@ -4,3 +4,4 @@
 7188,Henry,21,Bacholars of Information systems
 7190,Alexander,18,Bacholers of IT
 7176,John,28,Bacholars of Computing
+5666,Rourke,12,Diploma of Computing
